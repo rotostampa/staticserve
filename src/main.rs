@@ -1,13 +1,6 @@
 use actix_files as fs;
-use actix_files::NamedFile;
-use actix_web::http::header::{
-    ContentDisposition, ContentEncoding, DispositionType, HeaderName, HeaderValue,
-};
-use actix_web::{
-    error::ErrorNotFound, get, http::StatusCode, App, Error, HttpRequest, HttpResponse, HttpServer,
-    Result,
-};
-use std::fs::File;
+use actix_web::http::header::{ContentDisposition, ContentEncoding, DispositionType};
+use actix_web::{get, App, Error, HttpRequest, HttpServer, Result};
 use std::io::Read;
 use std::path::PathBuf;
 
