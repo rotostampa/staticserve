@@ -5,5 +5,5 @@ this simple static server is able to serve files from disk and automatically det
 Sample usage
 
 ```
-cargo run --production -- --port 9090 --path /opt/homebrew/var/www/
+cargo run --release -- --port 9090 --path /opt/homebrew/var/www/
 ```
