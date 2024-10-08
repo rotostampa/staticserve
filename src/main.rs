@@ -21,7 +21,6 @@ struct Args {
     /// Directory where the files are served from
     #[arg(short, long, default_value = "127.0.0.1")]
     host: String,
-
 }
 
 #[get("/{filename:.*}")]
@@ -46,9 +45,7 @@ async fn main() -> std::io::Result<()> {
     // Start the HTTP server with the given port and serve files from the provided directory
 
     let port = args.port;
-    let host = args.host.clone();
-
-
+    let host = args.host;
 
     HttpServer::new(move || {
         App::new()
