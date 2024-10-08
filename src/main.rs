@@ -1,5 +1,5 @@
 use actix_files as fs;
-use actix_web::http::header::{ContentDisposition, ContentEncoding, DispositionType};
+use actix_web::http::header::ContentEncoding;
 use actix_web::{get, App, Error, HttpRequest, HttpServer, Result};
 use clap::Parser;
 use std::io::Read;
