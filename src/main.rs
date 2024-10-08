@@ -45,7 +45,7 @@ async fn main() -> std::io::Result<()> {
     // Start the HTTP server with the given port and serve files from the provided directory
 
     let port = args.port;
-    let host = args.host;
+    let host = args.host.clone();
 
     HttpServer::new(move || {
         App::new()
