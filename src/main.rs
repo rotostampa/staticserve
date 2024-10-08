@@ -17,6 +17,11 @@ struct Args {
     /// Directory where the files are served from
     #[arg(short, long, default_value = "./files")]
     folder: String,
+
+    /// Directory where the files are served from
+    #[arg(short, long, default_value = "127.0.0.1")]
+    host: String,
+
 }
 
 #[get("/{filename:.*}")]
@@ -44,13 +49,18 @@ async fn main() -> std::io::Result<()> {
     let args = Args::parse();
 
     // Start the HTTP server with the given port and serve files from the provided directory
-    let port = args.port; // Store the port separately
+
+    let port = args.port;
+    let host = args.host.clone();
+
+
+
     HttpServer::new(move || {
         App::new()
             .app_data(actix_web::web::Data::new(args.clone())) // Share CLI args with the handler
             .service(index)
     })
-    .bind(("127.0.0.1", port))? // Now we can still use the port variable
+    .bind((host, port))? // Now we can still use the port variable
     .run()
     .await
 }
