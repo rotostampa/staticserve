@@ -35,12 +35,7 @@ async fn index(req: HttpRequest, data: actix_web::web::Data<Args>) -> Result<fs:
         file = file.set_content_encoding(ContentEncoding::Gzip);
     }
 
-    Ok(file
-        .use_last_modified(true)
-        .set_content_disposition(ContentDisposition {
-            disposition: DispositionType::Attachment,
-            parameters: vec![],
-        }))
+    Ok(file.use_last_modified(true))
 }
 
 #[actix_web::main]
